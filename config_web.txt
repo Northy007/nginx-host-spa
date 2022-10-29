@@ -1,0 +1,32 @@
+//เราจะดึงข้อมูลจาก mysql ด้วย Nodejs และแสดงผลผ่าน ejs 
+//ซึ่งเป็น Template Engine ที่ให้เราสามารถฝังคำสั่ง JavaScript ไว้ใน HTML ได้เลย
+//หลักการทำงานของ Template Engine ก็คือ มันจะทำการแทนค่าตัวแปรต่าง ๆ ที่อยู่ในไฟล์ 
+//Template จากนั้นประมวลผล Template ออกมาเป็น HTML เพื่อให้เรานำไปแสดงผล
+
+
+โดยเราจะทำหนา้เว็บไซต์ของเราด้วย directory ที่ webadmin ได้รับสิทในการดูแลนั่นคือ webadmin
+เรา cd เข้าไปและสร้าง directory ที่ชื่อว่า app 
+จากนั้นทำการ npm init --y
+และติดตั้ง package ดังนี้
+    npm i express mysql path ejs
+    และก็ติดตั้ง nodemon เพื่อไม่ต้องปิดและ start node ทุกครั้งที่มีการเปลี่ยนแปลงข้อมูล
+    npm i -D nodemon
+
+    แล้วเราก็ไปแก้ script ใน package
+        "web" : "nodemon index.js"
+        "start : "node index.js"
+
+จากนั้นเมื่อติดตั้ง package เสร็จหมดแล้วให้สร้างไฟล์
+index.js
+ แล้วเขียน code ให้เรียร้อยตามที่เราเตรียมไว้
+
+ทำการติดตั้ง pm2
+ sudo npm install pm2@latest -g
+
+ให้ pm2 เปิด node ที่เราสร้างไว้
+pm2 start index.js
+pm2 startup systemd
+pm2 save
+
+จากนั้นไปทำการ config ตัว nginx โดยสร้างไฟ spa.com ไปที่ sites-available จากนั้นไป  
+unlink ไฟล์ตัวเดินใน sites-enable และ link ไฟล์ของเราไปแทนจากนั้น restart nginx

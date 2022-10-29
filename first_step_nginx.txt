@@ -1,0 +1,15 @@
+sudo apt update //อัพเดตระบบ
+
+sudo apt install nginx //ติดตั้ง nginx
+
+sudo ufw app list //ตรวจสอบว่าติดตั้งเรียบร้อยรึยัง
+
+sudo ufw allow 'Nginx HTTP' //อนุญาติให้ Nginx HTTP ทำงาน
+
+sudo ufw status //ตรวจสอบว่า Nginx HTTP ได้รับอนุญิรึยัง 
+
+systemctl status nginx //ตรวจสอบว่า nginx ทำงานอยู่หรือไม่
+
+ถ้าไม่ทำงานลอง systemctl restart nginx ดู
+
+แล้วทดลองเข้า localhost ดู
